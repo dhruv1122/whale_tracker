@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🏄‍♂️ Cardano Whale Watcher v2.0</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="ocean-bg">
+        <div class="wave"></div>
+    </div>
+
+    <!-- Status Indicator -->
+    <div id="status-indicator" class="status-indicator">🟡 Connecting...</div>
+
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1>🏄‍♂️ Cardano Whale Watcher v2.0</h1>
+            <p>Professional whale tracking with individual wallet monitoring</p>
+            <div class="last-update">Last update: <span id="last-update-time">Loading...</span></div>
+        </header>
+
+        <!-- Stats Grid -->
+        <section class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-header">
+                    <span class="stat-title">Whale Activity</span>
+                    <span class="emoji">🐋</span>
+                </div>
+                <div class="stat-value" id="activity-score">Loading...</div>
+                <div class="stat-change" id="activity-change">Calculating...</div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-header">
+                    <span class="stat-title">ADA Price</span>
+                    <span class="emoji">💰</span>
+                </div>
+                <div class="stat-value" id="ada-price">$0.47</div>
+                <div class="stat-change" id="price-change">Loading...</div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-header">
+                    <span class="stat-title">Large Transactions</span>
+                    <span class="emoji">📊</span>
+                </div>
+                <div class="stat-value" id="transaction-count">0</div>
+                <div class="stat-change">Last hour</div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-header">
+                    <span class="stat-title">Market Sentiment</span>
+                    <span class="emoji">🌊</span>
+                </div>
+                <div class="stat-value" id="sentiment">Neutral</div>
+                <div class="stat-change" id="sentiment-details">Analyzing...</div>
+            </div>
+        </section>
+
+        <!-- Wallet Tracker -->
+        <section class="wallet-tracker">
+            <h3 class="section-title">🎯 Wallet & Handle Tracker</h3>
+            <div class="tracker-input">
+                <input 
+                    type="text" 
+                    id="wallet-input" 
+                    placeholder="Enter address (addr1...) or handle ($charles)" 
+                    class="wallet-input"
+                />
+                <input 
+                    type="text" 
+                    id="nickname-input" 
+                    placeholder="Nickname (optional)" 
+                    class="wallet-input nickname-input"
+                />
+                <button id="track-btn" class="btn track-btn">🔍 Track</button>
+            </div>
+            <div class="quick-add">
+                <span>Quick Add:</span>
+                <button class="btn quick-btn" data-input="$charles" data-nickname="Charles H.">👑 $charles</button>
+                <button class="btn quick-btn" data-input="$minswap" data-nickname="MinSwap">🔄 $minswap</button>
+            </div>
+        </section>
+
+        <!-- Tracked Wallets -->
+        <section class="tracked-wallets" id="tracked-wallets" style="display: none;">
+            <h3 class="section-title">
+                📊 Tracked Wallets 
+                <span class="count">(<span id="wallet-count">0</span> active)</span>
+            </h3>
+            <div id="wallet-list" class="wallet-list">
+                <!-- Tracked wallets appear here -->
+            </div>
+        </section>
+
+        <!-- Whale Activity -->
+        <section class="whale-activity">
+            <h3 class="section-title">
+                <span class="pulse"></span>
+                Recent Whale Activity
+            </h3>
+            <div id="whale-list" class="activity-list">
+                <div class="loading">🔄 Scanning blockchain for whale movements...</div>
+            </div>
+        </section>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
